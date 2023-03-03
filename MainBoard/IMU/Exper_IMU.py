@@ -1,5 +1,8 @@
 import serial
 
+def decode_data(data):
+    return
+
 ser = serial.Serial('/dev/ttyUSB0', 115200, timeout=1)
 
 # continually read 100 bytes from the serial port
