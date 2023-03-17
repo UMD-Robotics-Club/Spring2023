@@ -14,8 +14,17 @@ void setup()
 void loop() 
 {
   //print received data. Data was received in serialEvent;
-  Serial.print("Time:20");Serial.print(JY901.stcTime.ucYear);Serial.print("-");Serial.print(JY901.stcTime.ucMonth);Serial.print("-");Serial.print(JY901.stcTime.ucDay);
-  Serial.print(" ");Serial.print(JY901.stcTime.ucHour);Serial.print(":");Serial.print(JY901.stcTime.ucMinute);Serial.print(":");Serial.println((float)JY901.stcTime.ucSecond+(float)JY901.stcTime.usMiliSecond/1000);
+  Serial.print("Time:20");
+  Serial.print(JY901.stcTime.ucYear);
+  Serial.print("-");
+  Serial.print(JY901.stcTime.ucMonth);
+  Serial.print("-");
+  Serial.print(JY901.stcTime.ucDay);
+  Serial.print(" ");
+  Serial.print(JY901.stcTime.ucHour);
+  Serial.print(":");
+  Serial.print(JY901.stcTime.ucMinute);
+  Serial.print(":");Serial.println((float)JY901.stcTime.ucSecond+(float)JY901.stcTime.usMiliSecond/1000);
                
   Serial.print("Acc:");Serial.print((float)JY901.stcAcc.a[0]/32768*16);Serial.print(" ");Serial.print((float)JY901.stcAcc.a[1]/32768*16);Serial.print(" ");Serial.println((float)JY901.stcAcc.a[2]/32768*16);
   
