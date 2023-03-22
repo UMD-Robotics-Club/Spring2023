@@ -1,3 +1,5 @@
+import serial
+
 def process_message(message):
     if(message[0] != '!'):
         return "", []
@@ -24,9 +26,15 @@ def process_message(message):
     
     return header, parsed_data
 
-print(process_message("!gyro,10,5,18.3;"))
-print(process_message("!gyro,10,5,18.3akjsdgh;"))
-print(process_message("gyro,10,5,18.3;"))
-print(process_message("!gyro,10,5,18.3"))
+ser = serial.Serial('COM4', 9600)
+
+while True:
+    message = ser.readline()
+    message = message.decode().strip()
+    header, parsed_data = process_message(message)
+    print(header, parsed_data)
+
+
+
 
 
