@@ -16,7 +16,9 @@ while 1:
     imu.update()
     x = imu.acc[0]
     y = imu.acc[1]
-    turn_motor.set_target_velocity(x)
-    power_motor.set_target_velocity(y)
+    if -0.39 < x < 0.39:
+        turn_motor.set_target_velocity(x)
+    if -0.39 < y < 0.39:
+        power_motor.set_target_velocity(y)
     turn_motor.update()
     power_motor.update()
