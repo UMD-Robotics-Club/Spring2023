@@ -1,13 +1,13 @@
 import serial
-from Motor import motor
+from Motor import Motor
 from IMU import IMU
 
 
-turn_motor = motor(123, 13425) # TODO: fill with real values later
-power_motor = motor(678, 5786) # TODO: fill with real values later
+turn_motor = Motor.motor(123, 13425) # TODO: fill with real values later
+power_motor = Motor.motor(678, 5786) # TODO: fill with real values later
 
-ser = serial.Serial('/dev/ttyACM0')  # open serial port TODO: fill with real value later
-imu = IMU(ser)
+ser = serial.Serial('/dev/ttyACM0')
+imu = IMU.IMU(ser)
 
 while 1: 
 #read from joystick (IMU for now)
@@ -16,6 +16,7 @@ while 1:
     imu.update()
     x = imu.acc[0]
     y = imu.acc[1]
+    print(x,y)
     if -0.39 < x < 0.39:
         turn_motor.set_target_velocity(x)
     if -0.39 < y < 0.39:
