@@ -6,7 +6,7 @@ from IMU import IMU
 turn_motor = motor(123, 13425) # TODO: fill with real values later
 power_motor = motor(678, 5786) # TODO: fill with real values later
 
-ser = serial.Serial('/dev/ttyUSB0')  # open serial port TODO: fill with real value later
+ser = serial.Serial('/dev/ttyACM0')  # open serial port TODO: fill with real value later
 imu = IMU(ser)
 
 while 1: 
