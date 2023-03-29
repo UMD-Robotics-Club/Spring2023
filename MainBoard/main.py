@@ -3,8 +3,8 @@ from Motor import Motor
 from IMU import IMU
 
 
-turn_motor = Motor.motor(123, 13425) # TODO: fill with real values later
-power_motor = Motor.motor(678, 5786) # TODO: fill with real values later
+turn_motor = Motor.motor(11, 32) # TODO: fill with real values later
+power_motor = Motor.motor(12, 33) # TODO: fill with real values later
 
 ser = serial.Serial('/dev/ttyACM0')
 imu = IMU.IMU(ser)

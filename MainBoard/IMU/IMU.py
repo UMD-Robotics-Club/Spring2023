@@ -17,12 +17,12 @@ class IMU:
         - ser: An initalized serial object which can communicate with the IMU
         '''
         self.serial = ser
-        self.time = []
-        self.acc = []
-        self.gyro = []
-        self.angle = []
-        self.mag = []
-        self.pressure = []
+        self.time = [0, 0, 0]
+        self.acc = [0, 0, 0]
+        self.gyro = [0, 0, 0]
+        self.angle = [0, 0, 0]
+        self.mag = [0, 0, 0]
+        self.pressure = [0, 0, 0]
         return
     
 
@@ -63,7 +63,11 @@ class IMU:
         Meant to be called continuously
         '''
         # get a line of serial
-        message = self.ser.readline()
+        try:
+            message = self.serial.readline().decode('UTF-8').strip()
+        except UnicodeDecodeError:
+            print("Bad shit happened")
+            return
         # parse the serial into a header and list
         header, parsed_data = self.process_message(message)
         # use the header to figure out which internal list to store the serial list in
