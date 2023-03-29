@@ -49,7 +49,7 @@ class motor:
             GPIO.output(self.__direction_pin, (True and not self.is_inverted))
         # set speed based on velocity
         try:
-            self.speed.ChangeDutyCycle(abs(self.__current_velocity)*100)
+            self.speed.ChangeDutyCycle(abs(self.__current_velocity+1)*50)
         except ValueError:
             print("Invalid value error inputted for motor.", self.__current_velocity, self.current_time - self.old_time)
     
