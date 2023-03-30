@@ -3,6 +3,8 @@
 #include <JY901.h>
 #include <Servo.h>
 #include "PINOUT.h"
+#include "SerialMessage.h"
+
 /*
 http://item.taobao.com/item.htm?id=43511899945
 Test on mega2560.
@@ -14,8 +16,10 @@ Servo throttleServo;
 float x = 0;
 float y = 0;
 
+SerialMessage message;
+
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   JY901.StartIIC();  
   turnServo.attach(TURN_SERVO_PIN);
   throttleServo.attach(THROTTLE_SERVO_PIN);
@@ -128,6 +132,11 @@ void printData(){
 }
 
 void loop() {
+  message.update();
+  if(message.isNewData()){
+    unsigned int args = message.getPopulatedArgs();
+    int * argLength = message.getArgs();
+  }
   JY901.GetTime();
   JY901.GetAcc();
   JY901.GetGyro();
