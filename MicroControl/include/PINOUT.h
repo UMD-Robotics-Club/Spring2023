@@ -1,0 +1,2 @@
+#define TURN_SERVO_PIN 5
+#define THROTTLE_SERVO_PIN 6
